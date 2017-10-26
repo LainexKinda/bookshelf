@@ -10,6 +10,7 @@
         <div th:replace="fragments/menu :: main"></div>
 
         <div class="w3-container w3-margin">
+            <a hrem="#" th:href="@{/edit-book(bookId=${book.id})}">edit</a>
             <div class="w3-row-padding">
                 <h1 class="w3-col s12" th:text="${book.title}">La Geometria Mar</h1>
             </div>
@@ -32,7 +33,8 @@
                             <td th:text="${book.year}">1989</td>
                         </tr>
                     </table>
-                    <form action="mybooks.html">
+                    <form action="mybooks.html" th:action="@{/order}" method="post">
+                        <input type="hidden" name="bookId" th:value="${book.id}"/>
                         <button class="w3-button w3-right w3-red">Order</button>
                     </form>
                 </div>
